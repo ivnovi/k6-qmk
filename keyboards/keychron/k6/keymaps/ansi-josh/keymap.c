@@ -39,6 +39,9 @@ enum my_keycodes {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
+// how long before tap becomes hold
+#define TAPPING_TERM 200
+
 /**
  * macOS Main Layer
  *
@@ -67,12 +70,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * HOM - Home
  * PUP - Page Up
  * PDN - Page Down
+ *       "MT(MOD_LCTL,KC_ESC)", 
+ * KC_ESC
  */
 [_MAC_BASE] = LAYOUT_65_ansi(
   // 0,    1,       2,       3,     4,     5,     6,      7,     8,     9,       10,      11,           12,           13,        14,      15
   KC_GRV,  KC_1,    KC_2,    KC_3,  KC_4,  KC_5,  KC_6,   KC_7,  KC_8,  KC_9,    KC_0,    KC_MINS,      KC_EQL,       KC_BSPC,            RGB_MOD,
   KC_TAB,  KC_Q,    KC_W,    KC_E,  KC_R,  KC_T,  KC_Y,   KC_U,  KC_I,  KC_O,    KC_P,    KC_LBRC,      KC_RBRC,      KC_BSLASH,          KC_HOME,
-  KC_ESC,  KC_A,    KC_S,    KC_D,  KC_F,  KC_G,  KC_H,   KC_J,  KC_K,  KC_L,    KC_SCLN, KC_QUOT,                    KC_ENT,             KC_PGUP,
+  MT(MOD_LCTL,KC_ESC),  KC_A,    KC_S,    KC_D,  KC_F,  KC_G,  KC_H,   KC_J,  KC_K,  KC_L,    KC_SCLN, KC_QUOT,                    KC_ENT,             KC_PGUP,
   KC_LSFT,          KC_Z,    KC_X,  KC_C,  KC_V,  KC_B,   KC_N,  KC_M,  KC_COMM, KC_DOT,  KC_SLSH,                    KC_RSFT,   KC_UP,   KC_PGDOWN,
   KC_LCTL, KC_LALT, KC_LGUI,                      KC_SPC,                        KC_RGUI, MO(_MAC_FN1), MO(_MAC_FN2), KC_LEFT,   KC_DOWN, KC_RGHT
 ),
